@@ -1,0 +1,42 @@
+﻿<Window x:Class="LUC.Console.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LUC.Console"
+        mc:Ignorable="d"
+        Title="Log console" Height="450" Width="800">
+    <Grid x:Name="layoutGrid" Background="DimGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250*" />
+        </Grid.ColumnDefinitions>
+        <Grid Background="Lavender" ToolTip="Choose the desired log levels">
+            <TextBox Background="Lavender" Text="Log Level" IsReadOnly="True" 
+                     HorizontalContentAlignment="Center" Width="70" Height="20" Margin="20,40,20,0" VerticalAlignment="Top" />
+            <ToggleButton x:Name="buttonInfo" IsChecked="True" Content="Info" Checked = "HandleCheck" Unchecked = "HandleUnchecked"
+                          Background="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Height="20" Margin="20,80,20,0" />
+            <ToggleButton x:Name="buttonError" IsChecked="True" Content="Error" Checked = "HandleCheck" Unchecked = "HandleUnchecked"
+                          Background="AliceBlue" VerticalAlignment="Top" HorizontalAlignment="Center" Width="70" Height="20" Margin="20,110,20,0"/>
+            <ToggleButton x:Name="buttonCriticalError" IsChecked="True" Content="Critical" Checked = "HandleCheck" Unchecked = "HandleUnchecked"
+                          Background="AliceBlue" VerticalAlignment="Top" HorizontalAlignment="Center" Width="70" Height="20" Margin="20,140,20,0"/>
+            <ToggleButton x:Name="buttonFatalError" IsChecked="True" Content="Fatal" Checked = "HandleCheck" Unchecked = "HandleUnchecked"
+                          Background="AliceBlue" VerticalAlignment="Top" HorizontalAlignment="Center" Width="70" Height="20" Margin="20,170,20,0"/>
+        </Grid>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Left" />
+        <TabControl x:Name="loggers" Grid.Column="2" Background="DimGray">
+            <TabItem x:Name="fullLog" Selector.Selected="OnTabSelected">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">Full log</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                        <ListBox x:Name="Logs" ScrollViewer.CanContentScroll="True" Background="DimGray">
+                        </ListBox>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
